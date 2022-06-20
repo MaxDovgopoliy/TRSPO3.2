@@ -2,8 +2,7 @@ package org.example.dovhopolyi.controllers;
 
 import org.example.dovhopolyi.dao.TourDAO;
 import org.example.dovhopolyi.dao.CustomerDAO;
-import org.example.dovhopolyi.model.Tour;
-import org.example.dovhopolyi.model.Сustomer;
+import org.example.dovhopolyi.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class CustomerController {
     @GetMapping()
     public @ResponseBody String index() {
         StringBuilder stringBuilder= new StringBuilder();
-        for(Сustomer customer:customerDAO.getAllCustomers()){
+        for(Customer customer:customerDAO.getAllCustomers()){
             stringBuilder.append(customer);
             stringBuilder.append("\n");
         }
@@ -48,7 +47,7 @@ public class CustomerController {
     }
 
     @RequestMapping (method = RequestMethod.POST,value = "/add")
-    public void add(@ModelAttribute Сustomer customer, Model model) throws ServletException, IOException {
+    public void add(@ModelAttribute Customer customer, Model model) throws ServletException, IOException {
         customerDAO.saveCustomer(customer);
     }
 
